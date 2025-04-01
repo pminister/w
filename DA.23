@@ -1,0 +1,5 @@
+Import re
+Text = “Hello, #world123! This is a sample text paragraph. It contains special characters and 5 digits.”
+# Remove special characters and digits
+Processed_text = re.sub(r’[^a-zA-Z\s]’, ‘’, text)
+Print(processed_text)

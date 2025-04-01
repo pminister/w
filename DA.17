@@ -1,0 +1,24 @@
+Import re
+From nltk.tokenize import sent_tokenize
+# Text paragraph
+Text = “So, keep working. Keep striving. Never give up. Fall down seven times, get up eight. Ease is a
+greater threat to progress than hardship. Ease is a greater threat to progress than hardship. So, keep
+moving, keep growing, keep learning. See you at work.”
+# Remove special characters and digits
+Text = re.sub(‘[^A-Za-z]+’, ‘ ‘, text)
+# Tokenize the sentences
+Sentences = sent_tokenize(text)
+# Calculate the score of each sentence based on the number of words
+# The sentences with more words will have a higher score
+Scores = {}
+For sentence in sentences:
+Words = sentence.split()
+Score = len(words)
+Scores[sentence] = score
+# Sort the sentences based on their scores
+Sorted_sentences = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+# Extract the top 2 sentences with the highest scores as the summary
+Summary_sentences = [sentence[0] for sentence in sorted_sentences[:2]]
+Summary = “ “.join(summary_sentences)
+# Print the summary
+Print(summary)

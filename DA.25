@@ -1,0 +1,28 @@
+Import pandas as pd
+Import nltk
+From nltk.sentiment.vader import SentimentIntensityAnalyzer
+# read the dataset
+Df = pd.read_csv(‘covid_2021_1.csv’)
+# remove null values and duplicates
+Df.dropna(inplace=True)
+Df.drop_duplicates(subset=’Comment’, inplace=True)
+# tokenize comments in words
+Nltk.download(‘punkt’)
+Df[‘tokens’] = df[‘Comment’].apply(nltk.word_tokenize)
+# perform sentiment analysis
+Nltk.download(‘vader_lexicon’)
+Sia = SentimentIntensityAnalyzer()
+Df[‘sentiment’] = df[‘Comment’].apply(lambda x: sia.polarity_scores(x)[‘compound’])
+# calculate percentage of positive, negative, and neutral comments
+Total_comments = len(df)
+Positive_comments = len(df[df[‘sentiment’] > 0])
+Negative_comments = len(df[df[‘sentiment’] < 0])
+Neutral_comments = len(df[df[‘sentiment’] == 0])
+Positive_percentage = (positive_comments / total_comments) * 100
+Negative_percentage = (negative_comments / total_comments) * 100
+Neutral_percentage = (neutral_comments / total_comments) * 100
+# print the results
+Print(‘Total Comments:’, total_comments)
+Print(‘Positive Comments:’, positive_comments, ‘(‘, positive_percentage, ‘%)’)
+Print(‘Negative Comments:’, negative_comments, ‘(‘, negative_percentage, ‘%)’)
+Print(‘Neutral Comments:’, neutral_comments, ‘(‘, neutral_percentage, ‘%)’)

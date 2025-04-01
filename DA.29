@@ -1,0 +1,20 @@
+# Import necessary libraries
+Import pandas as pd
+From sklearn.linear_model import LogisticRegression
+From sklearn.model_selection import train_test_split
+From sklearn.metrics import accuracy_score
+# Load the dataset
+Data = pd.read_csv(‘student_scores.csv’)
+# Split the data into input and output variables
+X = data.iloc[:, :-1].values
+Y = data.iloc[:, -1].values
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+# Create the logistic regression model and fit it to the training data
+Classifier = LogisticRegression()
+Classifier.fit(X_train, y_train)
+# Make predictions on the testing set
+Y_pred = classifier.predict(X_test)
+# Evaluate the model’s accuracy
+Accuracy = accuracy_score(y_test, y_pred)
+Print(“Accuracy:”, accuracy)

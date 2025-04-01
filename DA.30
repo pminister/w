@@ -1,0 +1,17 @@
+Transactions = [[‘eggs’, ‘milk’, ‘bread’], [‘eggs’, ‘apple’], [‘milk’, ‘bread’], [‘apple’, ‘milk’], [‘milk’, ‘apple’,
+‘bread’]]
+# Create a dictionary to map items to unique numeric values
+Item_to_num = {‘eggs’: 1, ‘milk’: 2, ‘bread’: 3, ‘apple’: 4}
+# Convert the categorical values in the dataset to numeric values
+Numeric_transactions = []
+For transaction in transactions:
+Numeric_transaction = [item_to_num[item] for item in transaction]
+Numeric_transactions.append(numeric_transaction)
+Print(numeric_transactions)
+From mlxtend.frequent_patterns import apriori, association_rules
+# Generate frequent itemsets with a minimum support of 0.4
+Frequent_itemsets = apriori(numeric_transactions, min_support=0.4, use_colnames=True)
+# Generate association rules with a minimum confidence of 0.7
+Rules = association_rules(frequent_itemsets, metric=”confidence”, min_threshold=0.7)
+Print(frequent_itemsets)
+Print(rules)

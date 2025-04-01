@@ -1,0 +1,18 @@
+Import pandas as pd
+# Read the dataset
+Df = pd.read_csv(‘INvideos.csv’)
+# Drop the columns that are not required
+Df = df.drop([‘video_id’, ‘trending_date’, ‘channel_title’, ‘category_id’, ‘publish_time’, ‘tags’,
+‘thumbnail_link’, ‘comments_disabled’, ‘ratings_disabled’, ‘video_error_or_removed’], axis=1)
+# Convert the datatype of ‘views’, ‘likes’, ‘dislikes’, and ‘comment_count’ to integer
+Df[[‘views’, ‘likes’, ‘dislikes’, ‘comment_count’]] = df[[‘views’, ‘likes’, ‘dislikes’,
+‘comment_count’]].astype(int)
+# Find the total views, likes, dislikes, and comment count
+Total_views = df[‘views’].sum()
+Total_likes = df[‘likes’].sum()
+Total_dislikes = df[‘dislikes’].sum()
+Total_comments = df[‘comment_count’].sum()
+Print(‘Total Views:’, total_views)
+Print(‘Total Likes:’, total_likes)
+Print(‘Total Dislikes:’, total_dislikes)
+Print(‘Total Comments:’, total_comments)

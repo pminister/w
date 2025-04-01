@@ -1,0 +1,41 @@
+# Install the libraries
+!pip install nltk matplotlib wordcloud
+# Import the necessary modules
+Import nltk
+From nltk.corpus import stopwords
+From nltk.tokenize import word_tokenize, sent_tokenize
+From nltk.probability import FreqDist
+Import matplotlib.pyplot as plt
+From wordcloud import WordCloud
+# Download the stopwords corpus
+Nltk.download(‘stopwords’)
+# Define the text paragraph
+Text = “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique ante et velit vestibulum, vel
+pharetra orci iaculis. Nullam mattis risus quis augue tincidunt rhoncus. Morbi varius, arcu vitae
+scelerisque laoreet, magna est imperdiet quam, sit amet ultrices lectus justo id enim. Sed dictum
+suscipit commodo. Sed maximus consequat risus, nec pharetra nibh interdum quis. Etiam eget quam vel
+augue dictum dignissim sit amet nec elit. Nunc at sapien dolor. Nulla vitae iaculis lorem. Suspendisse
+potenti. Sed non ante turpis. Morbi consectetur, arcu a vestibulum suscipit, mauris eros convallis nibh,
+nec feugiat orci enim sit amet enim. Aliquam erat volutpat. Etiam vel nisi id neque viverra dapibus non
+non lectus.”
+# Tokenize the paragraph to extract words and sentences
+Words = word_tokenize(text.lower())
+Sentences = sent_tokenize(text)
+# Remove the stopwords from the extracted words
+Stop_words = set(stopwords.words(‘english’))
+Filtered_words = [word for word in words if word.casefold() not in stop_words]
+# Calculate the word frequency distribution and plot the frequencies using matplotlib
+Fdist = FreqDist(filtered_words)
+Fdist.plot(30, cumulative=False)
+Plt.show()
+# Plot the wordcloud of the text using wordcloud
+Wordcloud = WordCloud(width = 800, height = 800,
+Background_color =’white’,
+Stopwords = stop_words,
+Min_font_size = 10).generate(text)
+# plot the WordCloud image
+Plt.figure(figsize = (8, 8), facecolor = None)
+Plt.imshow(wordcloud)
+Plt.axis(“off”)
+Plt.tight_layout(pad = 0)
+Plt.show()
