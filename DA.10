@@ -1,0 +1,22 @@
+Import pandas as pd
+From mlxtend.preprocessing import TransactionEncoder
+From mlxtend.frequent_patterns import apriori, association_rules
+# Create the dataset
+Dataset = {
+1: [“eggs”,”milk”,”bread”],
+2: [“eggs”,”apple”],
+3: [“milk”,”bread”],
+4: [“apple”,”milk”],
+5: [“milk”,”apple”,”bread”]
+}
+# Convert categorical values into numeric format
+Te = TransactionEncoder()
+Te_ary = te.fit(dataset.values()).transform(dataset.values())
+Df = pd.DataFrame(te_ary, columns=te.columns_)
+# Apply Apriori algorithm to generate frequent itemsets and association rules
+Min_sup = 0.4
+Frequent_itemsets = apriori(df, min_support=min_sup, use_colnames=True)
+Association_rules = association_rules(frequent_itemsets, metric=”confidence”, min_threshold=0.6)
+# Print the frequent itemsets and association rules
+Print(“Frequent Itemsets:\n”, frequent_itemsets)
+Print(“\nAssociation Rules:\n”, association_rules)

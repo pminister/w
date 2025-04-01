@@ -1,0 +1,22 @@
+Import pandas as pd
+From mlxtend.preprocessing import TransactionEncoder
+From mlxtend.frequent_patterns import apriori, association_rules
+# read the dataset
+Df = pd.read_csv(‘Market_Basket_Optimisation.csv’, header=None)
+# drop null values
+Df.dropna(inplace=True)
+# convert categorical values to numeric using one-hot encoding
+Te = TransactionEncoder()
+Te_ary = te.fit(df.values).transform(df.values)
+Df = pd.DataFrame(te_ary, columns=te.columns_)
+# generate frequent itemsets using apriori algorithm
+Frequent_itemsets = apriori(df, min_support=0.01, use_colnames=True)
+# generate association rules from frequent itemsets
+Rules = association_rules(frequent_itemsets, metric=”lift”, min_threshold=1)
+# display information
+Print(“Original Dataset:\n”)
+Print(df.head())
+Print(“\nFrequent Itemsets:\n”)
+Print(frequent_itemsets)
+Print(“\nAssociation Rules:\n”)
+Print(rules)
